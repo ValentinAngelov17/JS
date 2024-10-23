@@ -1,5 +1,6 @@
 function diagonalAttack(matrix) {
     let arr = [];
+    
 
     matrix.forEach(element => {
         let row = element.split(' ')
@@ -43,7 +44,7 @@ function diagonalAttack(matrix) {
 }
 
 
-// test case
+// test cases
 diagonalAttack([
     '5 3 12 3 1',
 
