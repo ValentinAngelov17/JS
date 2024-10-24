@@ -16,6 +16,8 @@ function sumByTown(arr) {
     console.log(JSON.stringify(objects));
 }
 
+//test cases
+
 sumByTown([
     'Sofia',
 
