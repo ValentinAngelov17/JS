@@ -1,4 +1,4 @@
-function solve(...args) {
+function calculateBmi(...args) {
     const obj = {};
 
     args.forEach(el => {
@@ -24,4 +24,4 @@ function solve(...args) {
 }
 
 //test case
-solve('cat', 42, function () { console.log('Hello world!'); })
+calculateBmi('cat', 42, function () { console.log('Hello world!'); })

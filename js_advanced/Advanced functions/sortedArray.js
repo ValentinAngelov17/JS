@@ -1,4 +1,4 @@
-function solve(a, b) {
+function calculateBmi(a, b) {
     let sorter = filter();
     return sorter[b](a);
     function filter() {
@@ -10,5 +10,5 @@ function solve(a, b) {
 }
 
 //tests
-console.log(solve([14, 7, 17, 6, 8], 'asc'));
-console.log(solve([14, 7, 17, 6, 8], 'desc'));
+console.log(calculateBmi([14, 7, 17, 6, 8], 'asc'));
+console.log(calculateBmi([14, 7, 17, 6, 8], 'desc'));
