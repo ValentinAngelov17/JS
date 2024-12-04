@@ -4,8 +4,8 @@ let someWorker = ((worker) => {
         worker.dizziness = false;
     }
     return worker
-})
-    ({
+})(
+    {
         weight: 120,
 
         experience: 20,
@@ -13,6 +13,7 @@ let someWorker = ((worker) => {
         levelOfHydrated: 200,
 
         dizziness: true
-    })
+    }
+);
 
 console.log(someWorker);
