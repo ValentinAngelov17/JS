@@ -5,7 +5,9 @@ function loadCommits() {
 
     fetch(`https://api.github.com/repos/${username}/${repo}/commits`)
         .then((response) => {
+            commitsUl.innerHTML = '';
             if (response.status >= 400) {
+                console.log(response);
                 throw ({
                     responseStatus: response.status,
                     responseStatusText: response.statusText
@@ -25,9 +27,9 @@ function loadCommits() {
         })
         .catch((response) => {
             let error = document.createElement('li')
-            error.innerText = `${response[responseStatus]} - ${response[responseStatusText]}`
+            error.innerText = `${response['responseStatus']} - ${response['responseStatusText']}`
             commitsUl.appendChild(error);
-            return error;
+            console.log(response);
         })
 
 
