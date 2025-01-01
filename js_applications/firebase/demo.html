@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Authentication Demo</title>
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
+</head>
+<body>
+
+  <div id="auth-container">
+    <h2>Firebase Authentication</h2>
+
+    <div id="register-form">
+      <h3>Register</h3>
+      <form>
+        <input type="email" id="register-email" placeholder="Email" required><br>
+        <input type="password" id="register-password" placeholder="Password" required autocomplete="current-password"><br>
+        <button onclick="registerUser()">Register</button>
+      </form>
+    </div>
+
+    <div id="login-form">
+      <h3>Login</h3>
+      <form>
+        <input type="email" id="login-email" placeholder="Email" required><br>
+        <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password"><br>
+        <button onclick="loginUser()">Login</button>
+      </form>
+    </div>
+
+    <button id="logout-button" onclick="logoutUser()" style="display: none;">Logout</button>
+  </div>
+
+  <script>
+    // Replace with your actual Firebase configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Register a new user
+    function registerUser() {
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // User registered successfully
+          console.log("User registered successfully:", userCredential.user);
+          // Hide register form and show login/logout forms
+          document.getElementById('register-form').style.display = 'none';
+          document.getElementById('login-form').style.display = 'block';
+          document.getElementById('logout-button').style.display = 'block';
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Error registering user:", errorCode, errorMessage);
+          // Display an error message to the user
+          alert("Registration failed. " + errorMessage); 
+        });
+    }
+
+    // ... other functions (loginUser, logoutUser)
+  </script>
+
+</body>
+</html>
